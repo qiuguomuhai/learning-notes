@@ -1,0 +1,56 @@
+the datagrid setting as following:
+$(id).datagrid({
+			url : url,
+			method:'get',
+			autoRowHeight:true,
+			rownumbers:false,
+			nowrap:false,
+			pagination:true,		
+			singleSelect:true,
+			striped:true,
+			align:'center',
+			halign:'center',
+			fitColumns:false,
+			pageSize:20,
+			pageList:[10,20,50,100],
+			columns:[[
+      {title:'全国', formatter: function(value,row,index){
+							return value == null ? "" : value;
+						}},
+						{title:'成交率1', colspan:3, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{title:'成交率2', colspan:3, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}}
+					],
+					[
+						{field:'CAR_SERIES_CN',title:'车系',width:colW * 0.1, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'DENOMINATOR1',title:'交车量1',width:colW * 0.17, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'NUMERATOR1',title:'试驾次数',width:colW * 0.147, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'RATE1',title:'成交率1',width:colW * 0.147, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'DENOMINATOR2',title:'交车量2',width:colW * 0.155, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'NUMERATOR2',title:'客户数',width:colW * 0.147, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}},
+						{field:'RATE2',title:'成交率2',width:colW * 0.147, formatter: function(value,row,index){
+	return value == null ? "" : value;
+						}}
+      ]],
+      //...
+      });
+      
+      problem: the setting align:'center' dosen't work
+      reason: the settings rownumbers:true, fitColumns:true,
+      solution: change the settings rownumbers:false, fitColumns:false, plus each columns' width as total which is greater than 1.
+      like above example: 0.1 + 0.17  +0.155 + 0.147*4 
